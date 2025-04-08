@@ -1,0 +1,84 @@
+//////////////////////////////////////
+//                                  // 
+// CHECK IN DATE: 4/13/2025         //
+//                                  //
+// FINAL DUE DATE: 4/20 (lmao)/2025 //
+//                                  //
+//////////////////////////////////////
+
+[] PART A: Planning
+  [] UML Use Case Diagram
+    [] 3 actors
+    [] 3 use cases
+    [] 1 includes relationship
+    [] 1 extends relationship
+  [] 2 use case scenarios
+  [] UML Class diagram
+
+=====================================
+
+[] PART B:
+  [] Create Classes
+    [] SpaceObject
+    [] Debris
+    [] Satellite
+    [] MissionControl
+    [] TrackingSystem
+    [] ImpactAnalysis
+    [] DebrisDensityAnalysis
+    [] RunSimulation
+    [] any additional classes we think are needed
+    
+  [] Class Considerations
+    [] All classes should have appropriate methods and fields
+    [] proper objet oriented principles have been applied
+    
+  [] Read information files and store info
+    [] pick a data structure 
+      [] time complexity
+      [] space complexity
+      [] retrieval efficiency
+
+  [] implement UI
+
+  [] implement functionality
+      [] Scientist
+        [] Track Objects in Space
+          [] Rocket Body
+          [] Debris
+          [] Payload
+          [] Unknown
+        [] Assess Orbit Status
+          [] Track objects in LEO
+          [] Assess if debris is still in orbit
+            [] store calculated data as new csv columns
+            [] generate txt
+      // at this point these functions are no longer described
+      [] Space Agency Rep
+        [] Analyze Long-term impact
+        [] Generate Density Report
+      [] Policymaker
+        [] Review Reports on Debris Impact
+        [] Asses Risk Levels for Future Space Missions
+      [] Admin
+        [] Create User
+        [] Manage User
+        [] Delete User
+
+  [] implement activity handler
+
+  [] implement exit handler
+    [] generate updated Debris Tracking Report
+    [] append latest log data
+
+  [] exception handling
+-----------------------------------------
+
+[] FINISHING TOUCHES:
+  [] Javadoc
+  [] lab report
+    [] screenshot failed changes, successful implementation, and bugfixes
+  [] individual code review
+  [] schedule TA/IA Demo for check-in
+  [] schedule TA/IA Demo for final deliverables
+  
