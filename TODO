@@ -7,11 +7,11 @@
 //////////////////////////////////////
 
 [] PART A: Planning
-  [] UML Use Case Diagram
-    [] 3 actors
-    [] 3 use cases
-    [] 1 includes relationship
-    [] 1 extends relationship
+  [x] UML Use Case Diagram
+    [x] 3 actors
+    [x] 3 use cases
+    [x] 1 includes relationship
+    [x] 1 extends relationship
   [] 2 use case scenarios
   [] UML Class diagram
 
