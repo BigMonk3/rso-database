@@ -1,6 +1,8 @@
 /*
  * represents a space object
  */
+import java.lang.Math;
+
 public abstract class SpaceObject {
     protected String recordID;
     protected String satelliteName;
@@ -14,7 +16,7 @@ public abstract class SpaceObject {
     protected float avgLongitude;
 
     public SpaceObject(String recordID, String satelliteName, String country, String orbitType, String launchSite, String geohash,
-    int launchYear, int daysOld, float longitude, float avgLongitude){
+    int launchYear, int daysOld, float longitude, float avgLongitude) {
         this.recordID = recordID;
         this.satelliteName = satelliteName;
         this.country = country;
@@ -32,6 +34,7 @@ public abstract class SpaceObject {
     }
 
     public abstract boolean isInOrbit();
+    
     public abstract String getRiskLevel();
 
     @Override
