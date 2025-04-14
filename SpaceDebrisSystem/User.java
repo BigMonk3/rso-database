@@ -1,3 +1,8 @@
+import java.util.HashMap;
+
+/*
+ * Class that handles the information about various user types
+ */
 public abstract class User {
   private String userId;
   private String name;
@@ -9,5 +14,5 @@ public abstract class User {
       this.role = role;
   }
 
-  public abstract String[] getMenuOptions();
+  public abstract HashMap<String, String[]> getMenuOptions();
 }
