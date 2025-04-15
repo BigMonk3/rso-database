@@ -7,12 +7,13 @@ import java.util.Scanner;
 public class MissionControl {
 
   private User[] users;
+  private in
 
   public void clear() {
     System.out.print("\033[H\033[2J");
   }
 
-  public int start(){
+  public void start(){
     int selection = -1;
 
     this.clear();
@@ -29,18 +30,6 @@ public class MissionControl {
 
       selection = input.nextInt();
 
-      if (selection == 0) {
-        this.clear();
-        System.out.println("Exited.\n");
-        break;
-      } else if (selection <= 4) {
-        return selection;
-      } else {
-        System.out.println("Invalid Selection. Press any key to continue: ");
-        input.next();
-        continue;
-      }
-    }
-    input.close();
-  }   
+    }   
+  }
 }
