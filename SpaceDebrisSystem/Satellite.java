@@ -20,7 +20,17 @@ public class Satellite extends SpaceObject {
         this.satelliteType = satelliteType;
     }
 
-    public void transmitData() {
-        System.out.println("OBAMA");
+    public String transmitData() {
+        return satelliteType;
+    }
+
+    @Override
+    public boolean isInOrbit(){
+        return orbitType != null && !orbitType.equalsIgnoreCase("Unknown") && longitude != 0.0;
+    }
+
+    @Override
+    public String getRiskLevel(){
+        return "N/A";
     }
 }
