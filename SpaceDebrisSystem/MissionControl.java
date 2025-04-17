@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class MissionControl {
 
-  private User[] users;
-  private in
+  public User[] users;
 
   public void clear() {
     System.out.print("\033[H\033[2J");
@@ -30,6 +29,7 @@ public class MissionControl {
 
       selection = input.nextInt();
 
-    }   
+    }  
+    input.close(); 
   }
 }

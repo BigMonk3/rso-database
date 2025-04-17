@@ -9,16 +9,8 @@ public class Debris extends SpaceObject {
         int launchYear, int daysOld, float longitude,
         float avgLongitude, int conjunctionCount) {
         
-        super(recordID,
-            satelliteName,
-            country,
-            orbitType,
-            launchSite,
-            geohash,
-            launchYear,
-            daysOld,
-            longitude,
-            avgLongitude);
+        super(recordID, satelliteName, country, orbitType, launchSite, geohash, launchYear, daysOld,
+            longitude, avgLongitude);
         this.conjunctionCount = conjunctionCount;
     }
 

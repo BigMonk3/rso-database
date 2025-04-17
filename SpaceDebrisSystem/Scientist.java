@@ -1,7 +1,6 @@
 /*
  * Scientist class
  */
-
 import java.util.HashMap;
 
 public class Scientist extends User {
