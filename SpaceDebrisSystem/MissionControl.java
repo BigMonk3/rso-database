@@ -29,7 +29,7 @@ public class MissionControl {
 
       selection = input.nextInt();
 
-    }  
-    input.close(); 
+    }
+    input.close();  
   }
 }

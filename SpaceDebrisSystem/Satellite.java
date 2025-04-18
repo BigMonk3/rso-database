@@ -4,8 +4,8 @@ public class Satellite extends SpaceObject {
 
     public Satellite (String recordID, String satelliteName, String country,
         String orbitType, String launchSite, String geohash,
-        int launchYear, int daysOld, float longitude,
-        float avgLongitude, String satelliteType) {
+        int launchYear, int daysOld, Double longitude,
+        Double avgLongitude, String satelliteType) {
         
         super(recordID, satelliteName, country, orbitType, launchSite, geohash, launchYear, daysOld,
             longitude, avgLongitude);

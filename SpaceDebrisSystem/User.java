@@ -1,5 +1,4 @@
 import java.util.HashMap;
-
 /*
  * Class that handles the information about various user types
  */

@@ -6,8 +6,8 @@ public class Debris extends SpaceObject {
 
     public Debris (String recordID, String satelliteName, String country,
         String orbitType, String launchSite, String geohash,
-        int launchYear, int daysOld, float longitude,
-        float avgLongitude, int conjunctionCount) {
+        int launchYear, int daysOld, Double longitude,
+        Double avgLongitude, int conjunctionCount) {
         
         super(recordID, satelliteName, country, orbitType, launchSite, geohash, launchYear, daysOld,
             longitude, avgLongitude);
@@ -25,7 +25,7 @@ public class Debris extends SpaceObject {
 
     @Override
     public String getRiskLevel(){
-        float drift = getOrbitalDrift();
+        Double drift = getOrbitalDrift();
         
         if(drift > 50) {
             return "High Risk";

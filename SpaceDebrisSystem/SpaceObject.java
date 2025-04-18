@@ -12,11 +12,11 @@ public abstract class SpaceObject {
     protected String geohash;
     protected int launchYear;
     protected int daysOld;
-    protected float longitude;
-    protected float avgLongitude;
+    protected Double longitude;
+    protected Double avgLongitude;
 
     public SpaceObject(String recordID, String satelliteName, String country, String orbitType, String launchSite, String geohash,
-    int launchYear, int daysOld, float longitude, float avgLongitude) {
+    int launchYear, int daysOld, Double longitude, Double avgLongitude) {
         this.recordID = recordID;
         this.satelliteName = satelliteName;
         this.country = country;
@@ -29,7 +29,7 @@ public abstract class SpaceObject {
         this.avgLongitude = avgLongitude; 
     }
 
-    public float getOrbitalDrift(){
+    public Double getOrbitalDrift(){
         return Math.abs(this.longitude - this.avgLongitude);
     }
 
