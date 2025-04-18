@@ -1,45 +1,48 @@
-/*
- * represents a space object
+/**
+ * Abstract base class representing a general object in space.
  */
-import java.lang.Math;
-
 public abstract class SpaceObject {
-    protected String recordID;
+    protected String recordId;
     protected String satelliteName;
     protected String country;
     protected String orbitType;
-    protected String launchSite;
-    protected String geohash;
     protected int launchYear;
+    protected String launchSite;
+    protected double longitude;
+    protected double avgLongitude;
+    protected String geohash;
     protected int daysOld;
-    protected Double longitude;
-    protected Double avgLongitude;
 
-    public SpaceObject(String recordID, String satelliteName, String country, String orbitType, String launchSite, String geohash,
-    int launchYear, int daysOld, Double longitude, Double avgLongitude) {
-        this.recordID = recordID;
+    public SpaceObject(String recordId, String satelliteName, String country, String orbitType,
+                       int launchYear, String launchSite, double longitude,
+                       double avgLongitude, String geohash, int daysOld) {
+        this.recordId = recordId;
         this.satelliteName = satelliteName;
         this.country = country;
         this.orbitType = orbitType;
-        this.launchSite = launchSite;
-        this.geohash = geohash;
         this.launchYear = launchYear;
-        this.daysOld = daysOld;
+        this.launchSite = launchSite;
         this.longitude = longitude;
-        this.avgLongitude = avgLongitude; 
+        this.avgLongitude = avgLongitude;
+        this.geohash = geohash;
+        this.daysOld = daysOld;
     }
 
-    public Double getOrbitalDrift(){
-        return Math.abs(this.longitude - this.avgLongitude);
-    }
-
-    public abstract boolean isInOrbit();
-    
-    public abstract String getRiskLevel();
+    public String getRecordId() { return recordId; }
+    public String getSatelliteName() { return satelliteName; }
+    public String getCountry() { return country; }
+    public String getOrbitType() { return orbitType; }
+    public int getLaunchYear() { return launchYear; }
+    public String getLaunchSite() { return launchSite; }
+    public double getLongitude() { return longitude; }
+    public double getAvgLongitude() { return avgLongitude; }
+    public String getGeohash() { return geohash; }
+    public int getDaysOld() { return daysOld; }
 
     @Override
-    public String toString(){
-        return recordID + "," +  satelliteName + "," + country + "," + orbitType + "," + launchSite + "," + geohash
-        + "," + launchYear + "," + daysOld + "," + longitude + "," + avgLongitude;
+    public String toString() {
+        return String.format("ID: %s | Name: %s | Country: %s | Orbit: %s | Year: %d | Site: %s | Lon: %.2f | AvgLon: %.2f | Geohash: %s | Days Old: %d",
+                recordId, satelliteName, country, orbitType, launchYear, launchSite,
+                longitude, avgLongitude, geohash, daysOld);
     }
 }

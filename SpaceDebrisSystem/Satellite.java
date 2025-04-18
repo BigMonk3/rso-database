@@ -1,28 +1,23 @@
-public class Satellite extends SpaceObject { 
+/**
+ * Represents a satellite or space object with a defined type like Payload or Rocket Body.
+ */
+public class Satellite extends SpaceObject {
+    private String objectType;
 
-    private String satelliteType;
-
-    public Satellite (String recordID, String satelliteName, String country,
-        String orbitType, String launchSite, String geohash,
-        int launchYear, int daysOld, Double longitude,
-        Double avgLongitude, String satelliteType) {
-        
-        super(recordID, satelliteName, country, orbitType, launchSite, geohash, launchYear, daysOld,
-            longitude, avgLongitude);
-        this.satelliteType = satelliteType;
+    public Satellite(String recordId, String satelliteName, String country, String orbitType,
+                     int launchYear, String launchSite, double longitude,
+                     double avgLongitude, String geohash, int daysOld, String objectType) {
+        super(recordId, satelliteName, country, orbitType, launchYear,
+              launchSite, longitude, avgLongitude, geohash, daysOld);
+        this.objectType = objectType;
     }
 
-    public String transmitData() {
-        return satelliteType;
-    }
-
-    @Override
-    public boolean isInOrbit(){
-        return orbitType != null && !orbitType.equalsIgnoreCase("Unknown") && longitude != 0.0;
+    public String getObjectType() {
+        return objectType;
     }
 
     @Override
-    public String getRiskLevel(){
-        return "N/A";
+    public String toString() {
+        return super.toString() + " | Type: " + objectType;
     }
 }
