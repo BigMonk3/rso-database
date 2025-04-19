@@ -37,10 +37,13 @@ public static void main(String[] args) {
           break;
         case 2:
           SpaceAgencyRep.display(scanner);
+          break;
         case 3:
           Policymaker.display(scanner);
+          break;
         case 4:
           Administrator.display(scanner);
+          break;
         case 5:
           running = false;
           System.out.println("Exiting Program");
