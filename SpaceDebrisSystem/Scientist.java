@@ -1,25 +1,35 @@
 /*
  * Scientist class
  */
-import java.util.HashMap;
+import java.util.Scanner;
 
-public class Scientist extends User {
-    
-    public Scientist(String userId, String name, String role) {
-        super(userId, name, role);
+public class Scientist{
+
+    public static void display(Scanner scanner){
+        boolean back = false;
+
+        while(!back){
+            System.out.println("\n=== Scientist Menu ===");
+            System.out.println("1. Track Object in Space");
+            System.out.println("2. Assess Orbit Status");
+            System.out.println("3. Back");
+
+            int choice = scanner.nextInt();
+            scanner.nextInt(); //consume newline
+
+            switch(choice){
+                case 1:
+                    TrackingSystem.trackObjects(scanner);
+                    break;
+                case 2:
+                    TrackingSystem.assessOrbitStatus(scanner);
+                    break;
+                case 3:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Try Again.");
+            }
+        }
     }
-
-    public HashMap<String, String[]> getMenuOptions() {
-        HashMap<String, String[]> options = new HashMap<String, String[]>();
-
-        String[] objTypes = {"Rocket Body", "Debris", "Payload", "Unknown"};
-        options.put("Track Objects in Space", objTypes);
-
-        String[] statusOptions = {"Track Objects in LEO", "Assess if Debris is Still in Orbit"};
-        options.put("Assess Orbit Status", statusOptions);
-        
-        options.put("Back", null);
-
-        return options;
-    } 
 }

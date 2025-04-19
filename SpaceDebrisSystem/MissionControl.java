@@ -1,35 +1,54 @@
 /*
- * manage user roles, menu, and actions
+ * controls main operations of the system
+ * such as user type selection
  */
-
 import java.util.Scanner;
 
 public class MissionControl {
+/*
+ * Starts simulation and handles main user interaction
+ */
 
-  public User[] users;
+public static void main(String[] args) {
+  MissionControl control = new MissionControl();
+  control.startSimulation();
+}
 
-  public void clear() {
-    System.out.print("\033[H\033[2J");
-  }
+  public void startSimulation(){
+    Scanner scanner = new Scanner(System.in);
+    boolean running = true;
 
-  public void start(){
-    int selection = -1;
+    while(running){
+      System.out.println("\n=== Space Debris Management System ===");
+      System.out.println("Select User Type:");
+      System.out.println("1. Scientist");
+      System.out.println("2. Space Agency Representative");
+      System.out.println("3. Policy Maker");
+      System.out.println("4. Administrator");
+      System.out.println("5. Exit");
+      System.out.println("Enter an Option: ");
 
-    this.clear();
-    System.out.println("Welcome to the Space Debris Monitoring System");
-    Scanner input = new Scanner(System.in);
-
-    while (selection < 0 || selection > 4) {
-      System.out.println("Select a user type: ");
-      System.out.println("\t1. Scientist");
-      System.out.println("\t2. Space Agency Representative");
-      System.out.println("\t3. Policymaker");
-      System.out.println("\t4. Administrator\n");
-      System.out.print("\t0. Exit\n\n>>> ");
-
-      selection = input.nextInt();
-
+      int choice = scanner.nextInt();
+      scanner.nextLine(); //makes new line
+      
+      switch(choice){
+        case 1:
+          Scientist.display(scanner);
+          break;
+        case 2:
+          SpaceAgencyRep.display(scanner);
+        case 3:
+          Policymaker.display(scanner);
+        case 4:
+          Administrator.display(scanner);
+        case 5:
+          running = false;
+          System.out.println("Exiting Program");
+          break;
+        default:
+          System.out.println("Invalid Option. Please try again.");
+      }
     }
-    input.close();  
+    scanner.close();
   }
 }

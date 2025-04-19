@@ -14,4 +14,14 @@ public abstract class User {
   }
 
   public abstract HashMap<String, String[]> getMenuOptions();
+
+  public static void createUser(){
+  }
+
+  public static void manageUser(){
+  }
+
+  public static void deleteUser(){
+  }
+  
 }

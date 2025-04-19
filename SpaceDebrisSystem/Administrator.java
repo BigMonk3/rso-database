@@ -1,10 +1,43 @@
-import java.util.HashMap;
+import java.util.Scanner;
 
 /*
  * class handles Policymaker menu options
  */
-public class Administrator extends User {
-    
+public class Administrator {
+    public static void display(Scanner scanner){
+        boolean back = false;
+
+        while(!back){
+            System.out.println("\n=== Administrator Menu ===");
+            System.out.println("1. Create User");
+            System.out.println("2. Manage User");
+            System.out.println("3. Delete User");
+            System.out.println("4 Back");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine(); //consumes newline
+
+            switch(choice){
+                case 1:
+                    User.createUser();
+                    break;
+                case 2:
+                    User.manageUser();
+                    break;
+                case 3:
+                    User.deleteUser();
+                    break;
+                case 4:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid Choice. Try Again");
+            }
+        }
+    }
+
+
+    /* 
     public Administrator(String userId, String name, String role) {
         super(userId, name, role);
     }
@@ -20,4 +53,5 @@ public class Administrator extends User {
 
         return options;
     }
+    */
 }
