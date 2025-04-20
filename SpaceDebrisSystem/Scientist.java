@@ -14,17 +14,17 @@ public class Scientist{
             System.out.println("2. Assess Orbit Status");
             System.out.println("3. Back");
 
-            int choice = scanner.nextInt();
-            scanner.nextInt(); //consume newline
+            char choice = scanner.next().charAt(0);
+            scanner.nextLine(); //consume newline
 
             switch(choice){
-                case 1:
+                case '1':
                     TrackingSystem.trackObjects(scanner);
                     break;
-                case 2:
+                case '2':
                     TrackingSystem.assessOrbitStatus(scanner);
                     break;
-                case 3:
+                case '3':
                     back = true;
                     break;
                 default:

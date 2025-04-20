@@ -4,6 +4,7 @@ import java.util.Scanner;
  * class handles Policymaker menu options
  */
 public class Administrator {
+
     public static void display(Scanner scanner){
         boolean back = false;
 
@@ -14,7 +15,7 @@ public class Administrator {
             System.out.println("3. Delete User");
             System.out.println("4 Back");
 
-            int choice = scanner.nextInt();
+            char choice = scanner.next().charAt(0);
             scanner.nextLine(); //consumes newline
 
             switch(choice){

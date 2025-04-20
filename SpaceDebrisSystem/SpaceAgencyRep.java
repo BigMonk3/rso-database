@@ -3,7 +3,7 @@ import java.util.Scanner;
  * Class that handles menu options for space agency representative
  */
 public class SpaceAgencyRep {
-    
+
     public static void display(Scanner scanner){
         boolean back = false;
 
@@ -13,17 +13,17 @@ public class SpaceAgencyRep {
             System.out.println("2. Generate Density Reports");
             System.out.println("3. Back");
 
-            int choice = scanner.nextInt();
+            char choice = scanner.next().charAt(0);
             scanner.nextLine(); //consume newline
 
             switch(choice){
-                case 1:
+                case '1':
                     ImpactAnalysis.analyzeLongTermImpact();
                     break;
-                case 2:
+                case '2':
                     DebrisDensityAnalysis.generateDensityReports();
                     break;
-                case 3:
+                case '3':
                     back = true;
                     break;
                 default:

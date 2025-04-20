@@ -13,8 +13,6 @@ public abstract class User {
       this.role = role;
   }
 
-  public abstract HashMap<String, String[]> getMenuOptions();
-
   public static void createUser(){
   }
 
