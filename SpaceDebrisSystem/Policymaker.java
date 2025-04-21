@@ -5,6 +5,11 @@ import java.util.Scanner;
  */
 public class Policymaker {
 
+    
+    /** 
+     * Menu for PolicyMaker
+     * @param scanner
+     */
     public static void display(Scanner scanner){
         boolean back = false;
         while(!back){

@@ -12,11 +12,19 @@ public class Unknown extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
+    
+    /** 
+     * @return String for unknown object
+     */
     @Override
     public String getObjectType() {
         return "Unknown";
     }
 
+    
+    /** 
+     * @return int for conjunction count
+     */
     @Override
     public int getConjunctionCount() {
         return conjunctionCount;

@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class Scientist{
 
+    
+    /** 
+     * menu for scientist
+     * @param scanner
+     */
     public static void display(Scanner scanner){
         boolean back = false;
 

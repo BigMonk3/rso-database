@@ -8,6 +8,13 @@
      */
     public class SpaceObjectData {
         
+        
+        /** 
+         * Using a HashMap to read file
+         * and store data
+         * @param csvFilePath
+         * @return HashMap<String, SpaceObject>
+         */
         public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
             HashMap<String, SpaceObject> objectMap = new HashMap<>();
 
@@ -23,7 +30,6 @@
 
                     String[] values = line.split(",", -1); // handle empty values
 
-                    // Adjusted for the new field ordering
                     String recordId = values[0].trim();
                     String satelliteName = values[1].trim();
                     String country = values[2].trim();
@@ -35,7 +41,7 @@
                     String geohash = values[8].trim();
                     int daysOld = Integer.parseInt(values[9].trim());
                     String objectType = values[10].trim();
-                    int conjunctionCount = Integer.parseInt(values[11].trim()); // new field
+                    int conjunctionCount = Integer.parseInt(values[11].trim());
 
                     SpaceObject obj;
 
@@ -73,6 +79,12 @@
             return objectMap;
         }
 
+        
+        /** 
+         * Checks for empty fields in CSV file
+         * @param s
+         * @return double
+         */
         // Helper to safely parse doubles in case of empty or malformed values
         private static double parseDoubleSafe(String s) {
             if (s == null || s.isEmpty()) return 0.0;

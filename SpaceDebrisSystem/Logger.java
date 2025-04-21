@@ -5,6 +5,12 @@ import java.io.PrintWriter;
 public class Logger {
     private String logFilePath = "system_log.txt";
 
+    
+    /** 
+     * Logger file to document
+     * any interactions
+     * @param message
+     */
     public void log(String message) {
         try(PrintWriter out = new PrintWriter(new FileWriter(logFilePath, true))){
             out.println("[" + java.time.LocalDateTime.now() + "]" + message);

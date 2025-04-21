@@ -12,11 +12,19 @@ public class Payload extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getObjectType() {
         return "Payload";
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int getConjunctionCount() {
         return conjunctionCount;

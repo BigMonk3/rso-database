@@ -28,6 +28,12 @@ public abstract class SpaceObject {
         this.daysOld = daysOld;
     }
 
+    
+    /** 
+     * getters
+     * @param toString
+     * @return String
+     */
     // Existing getters
     public String getRecordId() { return recordId; }
     public String getSatelliteName() { return satelliteName; }
@@ -40,10 +46,13 @@ public abstract class SpaceObject {
     public String getGeohash() { return geohash; }
     public int getDaysOld() { return daysOld; }
 
-    // New abstract methods for compatibility
     public abstract String getObjectType();
     public abstract int getConjunctionCount();
 
+    
+    /** 
+     * @return String of space object
+     */
     @Override
     public String toString() {
         return String.format("ID: %s | Name: %s | Country: %s | Orbit: %s | Year: %d | Site: %s | Lon: %.2f | AvgLon: %.2f | Geohash: %s | Days Old: %d",

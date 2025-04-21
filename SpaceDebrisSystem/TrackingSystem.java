@@ -6,6 +6,11 @@ public class TrackingSystem {
 
     private static final String CSV_PATH = "data/space_objects.csv";
 
+    
+    /** 
+     * Menu for choosing different objects
+     * @param scanner
+     */
     public static void trackObjects(Scanner scanner) {
         HashMap<String, SpaceObject> objects = SpaceObjectData.loadObjects(CSV_PATH);
 
@@ -36,6 +41,11 @@ public class TrackingSystem {
         }
     }
 
+    
+    /** 
+     * Manu to assess orbit status of an object
+     * @param scanner
+     */
     public static void assessOrbitStatus(Scanner scanner) {
         HashMap<String, SpaceObject> objects = SpaceObjectData.loadObjects(CSV_PATH);
 
@@ -58,6 +68,12 @@ public class TrackingSystem {
         }
     }
 
+    
+    /** 
+     * Outputs TXT file for Debris orbit status
+     * 
+     * @param objects 
+     */
     private static void assessDebrisStatus(HashMap<String, SpaceObject> objects) {
         int inOrbit = 0, exited = 0;
         List<SpaceObject> exitedDebris = new ArrayList<>();
@@ -65,7 +81,7 @@ public class TrackingSystem {
         try (PrintWriter writer = new PrintWriter("output/assessed_debris.csv");
              PrintWriter txtOut = new PrintWriter("output/exited_debris_report.txt")) {
 
-            writer.println("Record ID,Satellite Name,Country,Orbit Type,Launch Year,Launch Site,Longitude,Avg. Longitude,Geohash,Days Old,Still In Orbit,Risk Level");
+            writer.println("Record ID,Satellite Name,Country,Orbit Type,Launch Year,Launch Site,Longitude,Avg. Longitude, Geohash,Days Old,Still In Orbit,Risk Level");
 
             for (SpaceObject obj : objects.values()) {
                 if (!obj.getObjectType().equalsIgnoreCase("Debris")) continue;
@@ -109,6 +125,10 @@ public class TrackingSystem {
         }
     }
 
+    
+    /** 
+     * @param list of space object based on data from csv
+     */
     private static void printObjectList(List<SpaceObject> list) {
         if (list.isEmpty()) {
             System.out.println("No objects found.");
