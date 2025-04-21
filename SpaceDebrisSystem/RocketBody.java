@@ -1,7 +1,10 @@
-public class Debris extends SpaceObject {
+/**
+ * Represents a Rocket Body object in space.
+ */
+public class RocketBody extends SpaceObject {
     private int conjunctionCount;
 
-    public Debris(String recordId, String satelliteName, String country, String orbitType,
+    public RocketBody(String recordId, String satelliteName, String country, String orbitType,
                   int launchYear, String launchSite, double longitude, double avgLongitude,
                   String geohash, int daysOld, int conjunctionCount) {
         super(recordId, satelliteName, country, orbitType, launchYear, launchSite,
@@ -11,7 +14,7 @@ public class Debris extends SpaceObject {
 
     @Override
     public String getObjectType() {
-        return "Debris";
+        return "RocketBody";
     }
 
     @Override

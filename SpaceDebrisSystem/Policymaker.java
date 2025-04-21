@@ -13,16 +13,16 @@ public class Policymaker {
             System.out.println("2. Assess Risk Levels for Future Space Missions");
             System.out.println("3. Back");
 
-            char choice = scanner.next().charAt(0);
+            int choice = scanner.nextInt();
             scanner.nextLine(); //consume newline
 
             switch(choice){
-                case '1':
+                case 1:
                     ImpactAnalysis.reviewDebrisImpact();
                     break;
-                case '2':
+                case 2:
                     ImpactAnalysis.assessRiskLevels();
-                case '3':
+                case 3:
                     back = true;
                     break;
                 default:

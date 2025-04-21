@@ -13,9 +13,9 @@ public class Administrator {
             System.out.println("1. Create User");
             System.out.println("2. Manage User");
             System.out.println("3. Delete User");
-            System.out.println("4 Back");
+            System.out.println("4. Back");
 
-            char choice = scanner.next().charAt(0);
+            int choice = scanner.nextInt();
             scanner.nextLine(); //consumes newline
 
             switch(choice){

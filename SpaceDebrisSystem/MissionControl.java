@@ -12,12 +12,12 @@ public class MissionControl {
   public void startSimulation(){
     Scanner scanner = new Scanner(System.in);
     boolean running = true;
-    //create one user of each type since we don't have a user management system yet
+    /* 
     Scientist scientist = new Scientist();
     SpaceAgencyRep spaceRep = new SpaceAgencyRep();
     Policymaker policymaker = new Policymaker();
     Administrator admin = new Administrator();
-
+    */
     while(running){
       System.out.println("\n=== Space Debris Management System ===");
       System.out.println("Select User Type:");
@@ -28,32 +28,27 @@ public class MissionControl {
       System.out.println("5. Exit");
       System.out.print("Enter an Option: ");
 
-      char choice = scanner.next().charAt(0);
+      int choice = scanner.nextInt();
       scanner.nextLine(); //makes new line
 
       switch(choice){
-        case '1':
-          System.out.print("\033[H\033[2J");
-          scientist.display(scanner);
+        case 1:
+          Scientist.display(scanner);
           break;
-        case '2':
-          System.out.print("\033[H\033[2J");
-          spaceRep.display(scanner);
+        case 2:
+          SpaceAgencyRep.display(scanner);
           break;
-        case '3':
-          System.out.print("\033[H\033[2J");
-          policymaker.display(scanner);
+        case 3:
+          Policymaker.display(scanner);
           break;
-        case '4':
-          System.out.print("\033[H\033[2J");
-          admin.display(scanner);
+        case 4:
+          Administrator.display(scanner);
           break;
-        case '5':
+        case 5:
           running = false;
           System.out.println("Exiting Program");
           break;
         default:
-          System.out.print("\033[H\033[2J");
           System.out.println("Invalid Option. Please try again.");
       }
     }

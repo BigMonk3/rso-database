@@ -13,17 +13,17 @@ public class SpaceAgencyRep {
             System.out.println("2. Generate Density Reports");
             System.out.println("3. Back");
 
-            char choice = scanner.next().charAt(0);
+            int choice = scanner.nextInt();
             scanner.nextLine(); //consume newline
 
             switch(choice){
-                case '1':
+                case 1:
                     ImpactAnalysis.analyzeLongTermImpact();
                     break;
-                case '2':
+                case 2:
                     DebrisDensityAnalysis.generateDensityReports();
                     break;
-                case '3':
+                case 3:
                     back = true;
                     break;
                 default:

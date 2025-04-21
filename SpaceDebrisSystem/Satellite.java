@@ -2,22 +2,23 @@
  * Represents a satellite or space object with a defined type like Payload or Rocket Body.
  */
 public class Satellite extends SpaceObject {
-    private String objectType;
+    private int conjunctionCount;
 
     public Satellite(String recordId, String satelliteName, String country, String orbitType,
-                     int launchYear, String launchSite, double longitude,
-                     double avgLongitude, String geohash, int daysOld, String objectType) {
-        super(recordId, satelliteName, country, orbitType, launchYear,
-              launchSite, longitude, avgLongitude, geohash, daysOld);
-        this.objectType = objectType;
-    }
-
-    public String getObjectType() {
-        return objectType;
+                  int launchYear, String launchSite, double longitude, double avgLongitude,
+                  String geohash, int daysOld, int conjunctionCount) {
+        super(recordId, satelliteName, country, orbitType, launchYear, launchSite,
+              longitude, avgLongitude, geohash, daysOld);
+        this.conjunctionCount = conjunctionCount;
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " | Type: " + objectType;
+    public String getObjectType() {
+        return "Satellite";
+    }
+
+    @Override
+    public int getConjunctionCount() {
+        return conjunctionCount;
     }
 }
