@@ -1,0 +1,11 @@
+[2025-04-22 13:31:57] Scientist accessed the system.
+[2025-04-22 13:31:57] Scientist selected 'Track Object in Space'.
+[2025-04-22 13:31:57] Error reading file: enter csv file path here (No such file or directory)
+[2025-04-22 13:31:59] Scientist accessed Track Objects menu.
+[2025-04-22 13:31:59] Scientist requested to view objects of type: rocket body
+[2025-04-22 13:32:00] Scientist selected 'Assess Orbit Status'.
+[2025-04-22 13:32:00] Error reading file: enter csv file path here (No such file or directory)
+[2025-04-22 13:32:01] Scientist returned to previous menu.
+[2025-04-22 13:32:03] Scientist returned to main menu.
+[2025-04-22 13:32:04] Administrator accessed the system.
+[2025-04-22 13:32:08] Program exited by user. Final debris report and logs have been saved.

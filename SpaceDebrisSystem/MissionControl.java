@@ -31,25 +31,30 @@ public class MissionControl {
       int choice = scanner.nextInt();
       scanner.nextLine(); //makes new line
 
-      switch(choice){
+      switch (choice) {
         case 1:
-          Scientist.display(scanner);
-          break;
+            Logger.log("Scientist accessed the system.");
+            Scientist.display(scanner);
+            break;
         case 2:
-          SpaceAgencyRep.display(scanner);
-          break;
+            Logger.log("Space Agency Representative accessed the system.");
+            SpaceAgencyRep.display(scanner);
+            break;
         case 3:
-          Policymaker.display(scanner);
-          break;
+            Logger.log("Policymaker accessed the system.");
+            Policymaker.display(scanner);
+            break;
         case 4:
-          Administrator.display(scanner);
-          break;
+            Logger.log("Administrator accessed the system.");
+            Administrator.display(scanner);
+            break;
         case 5:
-          running = false;
-          System.out.println("Exiting Program");
-          break;
+            Logger.logExit();
+            running = false;
+            System.out.println("Exiting Program");
+            break;
         default:
-          System.out.println("Invalid Option. Please try again.");
+            System.out.println("Invalid Option. Please try again.");
       }
     }
     scanner.close();

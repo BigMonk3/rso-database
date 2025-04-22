@@ -1,97 +1,108 @@
-    import java.io.BufferedReader;
-    import java.io.FileReader;
-    import java.io.IOException;
-    import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+/**
+ * Handles loading of space object data from a CSV file into a HashMap
+ * Reads fields from a structured CSV file and maps each object type
+ * to its appropriate subclass Debris, Payload, RocketBody, Unknown
+ */
+public class SpaceObjectData {
+
+    // Default path to the CSV file                 enter file path here 
+    private static final String DEFAULT_CSV_PATH = "enter file path here";
 
     /**
-     * Handles loading of space object data from a CSV file into a HashMap.
+     * Loads objects using the default path
+     * @return HashMap mapping record IDs to SpaceObject instances
      */
-    public class SpaceObjectData {
-        
-        
-        /** 
-         * Using a HashMap to read file
-         * and store data
-         * @param csvFilePath
-         * @return HashMap<String, SpaceObject>
-         */
-        public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
-            HashMap<String, SpaceObject> objectMap = new HashMap<>();
+    public static HashMap<String, SpaceObject> loadObjects() {
+        return loadObjects(DEFAULT_CSV_PATH);
+    }
 
-            try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-                String line;
-                boolean isFirstLine = true;
+    /**
+     * Reads a CSV file and parses it into a HashMap of SpaceObject
+     * identifying object type and selecting appropriate subclass
+     * @param csvFilePath full file path to the space object CSV file
+     * @return HashMap<String, SpaceObject> of parsed data
+     */
+    public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
+        HashMap<String, SpaceObject> objectMap = new HashMap<>();
 
-                while ((line = br.readLine()) != null) {
-                    if (isFirstLine) {
-                        isFirstLine = false;
-                        continue; // skip header
-                    }
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            String line;
+            boolean isFirstLine = true;
 
-                    String[] values = line.split(",", -1); // handle empty values
-
-                    String recordId = values[0].trim();
-                    String satelliteName = values[1].trim();
-                    String country = values[2].trim();
-                    String orbitType = values[3].trim();
-                    int launchYear = Integer.parseInt(values[4].trim());
-                    String launchSite = values[5].trim();
-                    double longitude = parseDoubleSafe(values[6].trim());
-                    double avgLongitude = parseDoubleSafe(values[7].trim());
-                    String geohash = values[8].trim();
-                    int daysOld = Integer.parseInt(values[9].trim());
-                    String objectType = values[10].trim();
-                    int conjunctionCount = Integer.parseInt(values[11].trim());
-
-                    SpaceObject obj;
-
-                    switch (objectType.toLowerCase()) {
-                        case "debris":
-                            obj = new Debris(recordId, satelliteName, country, orbitType, launchYear,
-                                    launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                            break;
-                        case "payload":
-                            obj = new Payload(recordId, satelliteName, country, orbitType, launchYear,
-                                    launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                            break;
-                        case "rocket body":
-                        case "rocketbody":
-                            obj = new RocketBody(recordId, satelliteName, country, orbitType, launchYear,
-                                    launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                            break;
-                        case "unknown":
-                            obj = new Unknown(recordId, satelliteName, country, orbitType, launchYear,
-                                    launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                            break;
-                        default:
-                            obj = new Payload(recordId, satelliteName, country, orbitType, launchYear,
-                                    launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
-                            break;
-                    }
-
-                    objectMap.put(recordId, obj);
+            while ((line = br.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false; // skip header row
+                    continue;
                 }
 
-            } catch (IOException e) {
-                System.err.println("Error reading file: " + e.getMessage());
+                String[] values = line.split("\t", -1); // handle empty tab-delimited fields
+                if (values.length < 20) continue; // check for valid line
+
+                // extract fields in expected CSV order based on project prompt
+                String recordId = values[0].trim();
+                String satelliteName = values[2].trim();
+                String country = values[3].trim();
+                String orbitType = values[4].trim();
+                String objectType = values[5].trim().toLowerCase();
+                int launchYear = Integer.parseInt(values[6].trim());
+                String launchSite = values[7].trim();
+                double longitude = parseDoubleSafe(values[8].trim());
+                double avgLongitude = parseDoubleSafe(values[9].trim());
+                String geohash = values[10].trim();
+                int daysOld = Integer.parseInt(values[18].trim());
+                int conjunctionCount = Integer.parseInt(values[19].trim());
+
+                SpaceObject obj;
+
+                // match CSV object type to corresponding Java class
+                switch (objectType) {
+                    case "debris" -> obj = new Debris(recordId, satelliteName, country, orbitType, launchYear,
+                            launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
+
+                    case "payload" -> obj = new Payload(recordId, satelliteName, country, orbitType, launchYear,
+                            launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
+
+                    case "rocket body", "rocketbody" -> obj = new RocketBody(recordId, satelliteName, country, orbitType, launchYear,
+                            launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
+
+                    case "unknown", "" -> obj = new Unknown(recordId, satelliteName, country, orbitType, launchYear,
+                            launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
+
+                    default -> obj = new Payload(recordId, satelliteName, country, orbitType, launchYear,
+                            launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
+                }
+
+                // store in map by record ID
+                objectMap.put(recordId, obj);
             }
 
-            return objectMap;
+            Logger.log("Loaded " + objectMap.size() + " space objects from file: " + csvFilePath);
+
+        } catch (IOException e) {
+            Logger.log("Error reading file: " + e.getMessage());
+            System.err.println("Error reading file: " + e.getMessage());
         }
 
-        
-        /** 
-         * Checks for empty fields in CSV file
-         * @param s
-         * @return double
-         */
-        // Helper to safely parse doubles in case of empty or malformed values
-        private static double parseDoubleSafe(String s) {
-            if (s == null || s.isEmpty()) return 0.0;
-            try {
-                return Double.parseDouble(s);
-            } catch (NumberFormatException e) {
-                return 0.0;
-            }
+        return objectMap;
+    }
+
+    /**
+     * helper function to safely parse doubles defaulting to 0 if invalid
+     * @param s input string representing a double
+     * @return parsed double value or 0.0 on error
+     */
+    private static double parseDoubleSafe(String s) {
+        if (s == null || s.isEmpty()) return 0.0;
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException e) {
+            return 0.0;
         }
     }
+}
+
