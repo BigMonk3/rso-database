@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
  */
 public class Logger {
                                                 //enter a file path to have logger saved 
-    private static final String LOG_FILE_PATH = "enter file path here";
+    private static final String LOG_FILE_PATH = "data/logfile";
     private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     /**
