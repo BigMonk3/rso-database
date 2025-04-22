@@ -4,14 +4,15 @@ import java.util.stream.Collectors;
 
 public class TrackingSystem {
     // full path to the CSV file should match file path with SpaceObjectData.java class
-    private static final String CSV_PATH = "enter csv file path here";
+    private static final String CSV_PATH = "data/rso_metrics.csv";
 
     /**
      * displays a menu to allow the Scientist to view specific types of space objects
      * @param scanner Used to capture user input
      */
     public static void trackObjects(Scanner scanner) {
-        HashMap<String, SpaceObject> objects = SpaceObjectData.loadObjects(CSV_PATH);
+        System.out.println("******CALLING loadObjects()******");
+        HashMap<String, SpaceObject> objects = SpaceObjectData.loadObjects();
 
         System.out.println("\n== Track Objects ==");
         System.out.println("1. Rocket Body");

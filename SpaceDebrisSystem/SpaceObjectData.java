@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class SpaceObjectData {
 
     // Default path to the CSV file                 enter file path here 
-    private static final String DEFAULT_CSV_PATH = "enter file path here";
+    private static final String DEFAULT_CSV_PATH = "data/rso_metrics.csv";
 
     /**
      * Loads objects using the default path
@@ -28,19 +28,21 @@ public class SpaceObjectData {
      * @return HashMap<String, SpaceObject> of parsed data
      */
     public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
+        
         HashMap<String, SpaceObject> objectMap = new HashMap<>();
 
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-            String line;
+            String line = br.readLine();
             boolean isFirstLine = true;
 
-            while ((line = br.readLine()) != null) {
+            while (line != null) {
                 if (isFirstLine) {
+                    line = br.readLine();
                     isFirstLine = false; // skip header row
                     continue;
                 }
 
-                String[] values = line.split("\t", -1); // handle empty tab-delimited fields
+                String[] values = line.split(",");
                 if (values.length < 20) continue; // check for valid line
 
                 // extract fields in expected CSV order based on project prompt
@@ -54,8 +56,8 @@ public class SpaceObjectData {
                 double longitude = parseDoubleSafe(values[8].trim());
                 double avgLongitude = parseDoubleSafe(values[9].trim());
                 String geohash = values[10].trim();
-                int daysOld = Integer.parseInt(values[18].trim());
-                int conjunctionCount = Integer.parseInt(values[19].trim());
+                int daysOld = Integer.parseInt(values[19].trim());
+                int conjunctionCount = Integer.parseInt(values[20].trim());
 
                 SpaceObject obj;
 
@@ -79,6 +81,7 @@ public class SpaceObjectData {
 
                 // store in map by record ID
                 objectMap.put(recordId, obj);
+                line = br.readLine();
             }
 
             Logger.log("Loaded " + objectMap.size() + " space objects from file: " + csvFilePath);

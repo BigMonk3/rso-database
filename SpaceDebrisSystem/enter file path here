@@ -9,3 +9,122 @@
 [2025-04-22 13:32:03] Scientist returned to main menu.
 [2025-04-22 13:32:04] Administrator accessed the system.
 [2025-04-22 13:32:08] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:10:42] Scientist accessed the system.
+[2025-04-22 14:10:42] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:10:42] Error reading file: enter csv file path here (No such file or directory)
+[2025-04-22 14:10:44] Scientist accessed Track Objects menu.
+[2025-04-22 14:10:44] Scientist requested to view objects of type: debris
+[2025-04-22 14:10:45] Scientist returned to main menu.
+[2025-04-22 14:10:46] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:12:48] Scientist accessed the system.
+[2025-04-22 14:12:50] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:12:50] Error reading file: data/rso_metrics.csv (No such file or directory)
+[2025-04-22 14:12:57] Scientist accessed Track Objects menu.
+[2025-04-22 14:12:58] Scientist returned to main menu.
+[2025-04-22 14:13:00] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:13:27] Scientist accessed the system.
+[2025-04-22 14:13:27] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:13:27] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:14:14] Scientist accessed Track Objects menu.
+[2025-04-22 14:14:23] Scientist accessed the system.
+[2025-04-22 14:14:24] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:14:24] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:14:28] Scientist accessed Track Objects menu.
+[2025-04-22 14:14:29] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:14:29] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:15:11] Scientist accessed Track Objects menu.
+[2025-04-22 14:15:13] Scientist returned to main menu.
+[2025-04-22 14:15:13] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:15:18] Scientist accessed the system.
+[2025-04-22 14:15:20] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:15:20] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:15:21] Scientist accessed Track Objects menu.
+[2025-04-22 14:15:21] Scientist requested to view objects of type: debris
+[2025-04-22 14:15:23] Scientist returned to main menu.
+[2025-04-22 14:15:25] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:16:01] Scientist accessed the system.
+[2025-04-22 14:16:02] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:16:02] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:17:12] Scientist accessed the system.
+[2025-04-22 14:17:13] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:17:13] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:17:18] Scientist accessed Track Objects menu.
+[2025-04-22 14:17:18] Scientist requested to view objects of type: debris
+[2025-04-22 14:17:19] Scientist returned to main menu.
+[2025-04-22 14:17:20] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:18:45] Scientist accessed the system.
+[2025-04-22 14:18:46] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:18:46] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:18:48] Scientist accessed Track Objects menu.
+[2025-04-22 14:18:48] Scientist requested to view objects of type: debris
+[2025-04-22 14:20:08] Scientist accessed the system.
+[2025-04-22 14:20:08] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:20:08] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:20:35] Scientist accessed Track Objects menu.
+[2025-04-22 14:20:36] Scientist returned to main menu.
+[2025-04-22 14:20:37] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:20:57] Scientist accessed the system.
+[2025-04-22 14:20:58] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:22:29] Scientist accessed the system.
+[2025-04-22 14:22:29] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:24:10] Scientist accessed the system.
+[2025-04-22 14:24:10] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:24:10] Loaded 0 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:24:12] Scientist accessed Track Objects menu.
+[2025-04-22 14:24:13] Scientist returned to main menu.
+[2025-04-22 14:24:14] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:26:40] Scientist accessed the system.
+[2025-04-22 14:26:40] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:27:53] Scientist accessed the system.
+[2025-04-22 14:27:54] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:28:19] Scientist accessed the system.
+[2025-04-22 14:28:19] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:30:14] Scientist accessed the system.
+[2025-04-22 14:30:14] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:32:04] Scientist accessed the system.
+[2025-04-22 14:32:04] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:32:35] Scientist accessed the system.
+[2025-04-22 14:32:35] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:34:51] Scientist accessed the system.
+[2025-04-22 14:34:52] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:40:04] Scientist accessed the system.
+[2025-04-22 14:40:05] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:40:28] Scientist accessed the system.
+[2025-04-22 14:40:28] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:42:12] Scientist accessed the system.
+[2025-04-22 14:42:13] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:43:42] Scientist accessed the system.
+[2025-04-22 14:43:43] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:44:09] Scientist accessed the system.
+[2025-04-22 14:44:10] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:44:10] Loaded 98 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:44:14] Scientist accessed Track Objects menu.
+[2025-04-22 14:44:14] Scientist requested to view objects of type: debris
+[2025-04-22 14:44:16] Scientist returned to main menu.
+[2025-04-22 14:44:17] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:45:56] Scientist accessed the system.
+[2025-04-22 14:45:57] Scientist selected 'Assess Orbit Status'.
+[2025-04-22 14:45:57] Loaded 98 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:46:07] Scientist returned to previous menu.
+[2025-04-22 14:46:11] Scientist returned to main menu.
+[2025-04-22 14:46:12] Policymaker accessed the system.
+[2025-04-22 14:46:13] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:46:25] Scientist accessed the system.
+[2025-04-22 14:46:26] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:46:26] Loaded 98 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:46:29] Scientist accessed Track Objects menu.
+[2025-04-22 14:46:30] Scientist returned to main menu.
+[2025-04-22 14:46:52] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:47:04] Scientist accessed the system.
+[2025-04-22 14:47:04] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:47:04] Loaded 98 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:47:16] Scientist accessed Track Objects menu.
+[2025-04-22 14:47:16] Scientist returned to main menu.
+[2025-04-22 14:47:17] Program exited by user. Final debris report and logs have been saved.
+[2025-04-22 14:47:23] Scientist accessed the system.
+[2025-04-22 14:47:23] Scientist selected 'Track Object in Space'.
+[2025-04-22 14:47:23] Loaded 98 space objects from file: data/rso_metrics.csv
+[2025-04-22 14:47:27] Scientist accessed Track Objects menu.
+[2025-04-22 14:47:27] Scientist requested to view objects of type: debris
+[2025-04-22 14:47:44] Scientist returned to main menu.
+[2025-04-22 14:47:45] Program exited by user. Final debris report and logs have been saved.
