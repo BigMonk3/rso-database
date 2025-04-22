@@ -4,6 +4,11 @@ import java.util.Scanner;
  */
 public class SpaceAgencyRep {
 
+    
+    /** 
+     * menu for space agent rep
+     * @param scanner
+     */
     public static void display(Scanner scanner){
         boolean back = false;
 

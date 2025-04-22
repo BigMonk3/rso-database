@@ -12,11 +12,19 @@ public class RocketBody extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getObjectType() {
         return "RocketBody";
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int getConjunctionCount() {
         return conjunctionCount;

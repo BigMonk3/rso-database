@@ -9,11 +9,19 @@ public class Debris extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getObjectType() {
         return "Debris";
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int getConjunctionCount() {
         return conjunctionCount;

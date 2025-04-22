@@ -5,6 +5,11 @@ import java.util.Scanner;
  */
 public class Administrator {
 
+    
+    /** 
+     * Menu for admin
+     * @param scanner
+     */
     public static void display(Scanner scanner){
         boolean back = false;
 

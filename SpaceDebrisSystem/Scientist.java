@@ -5,6 +5,11 @@ import java.util.Scanner;
 
 public class Scientist{
 
+    
+    /** 
+     * menu for scientist
+     * @param scanner
+     */
     public static void display(Scanner scanner){
         boolean back = false;
 
@@ -17,19 +22,20 @@ public class Scientist{
             int choice = scanner.nextInt();
             scanner.nextLine(); //consume newline
 
-            switch(choice){
+            switch (choice) {
                 case 1:
+                    Logger.log("Scientist selected 'Track Object in Space'.");
                     TrackingSystem.trackObjects(scanner);
                     break;
                 case 2:
+                    Logger.log("Scientist selected 'Assess Orbit Status'.");
                     TrackingSystem.assessOrbitStatus(scanner);
                     break;
                 case 3:
+                    Logger.log("Scientist returned to main menu.");
                     back = true;
                     break;
-                default:
-                    System.out.println("Invalid Choice. Try Again.");
-            }
+            }            
         }
     }
 }

@@ -12,11 +12,19 @@ public class Satellite extends SpaceObject {
         this.conjunctionCount = conjunctionCount;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getObjectType() {
         return "Satellite";
     }
 
+    
+    /** 
+     * @return int
+     */
     @Override
     public int getConjunctionCount() {
         return conjunctionCount;
