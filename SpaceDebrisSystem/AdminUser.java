@@ -5,6 +5,11 @@ public class AdminUser extends User {
     public AdminUser(String username, String password, String firstName, String lastName, String dateOfBirth) {
         super(username, password, firstName, lastName, dateOfBirth, UserRole.ADMINISTRATOR);
     }
+
+    /**
+     * displays Administrator specific menu with options to create, manage, or delete users
+     * @param scanner scanner to read user input
+     */
     @Override
     public void displayMenu(Scanner scanner) {
         boolean back = false;
@@ -16,8 +21,8 @@ public class AdminUser extends User {
             System.out.println("3. Delete User");
             System.out.println("4. Back");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            // safe input with validation
+            int choice = InputHelper.getIntInput(scanner, "Enter an option (1-4): ", 1, 4);
 
             switch (choice) {
                 case 1 -> {
