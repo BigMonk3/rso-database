@@ -2,6 +2,7 @@
  * Controls main operations of the system
  * such as user type selection
  */
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class MissionControl {
@@ -23,45 +24,61 @@ public class MissionControl {
       System.out.println("5. Exit");
       System.out.print("Enter an Option: ");
 
-      int choice = scanner.nextInt();
-      scanner.nextLine(); // consume newline
-      
-      if(choice == 5){
+      int choice = -1;
+
+      // Handle invalid non-integer input
+      try {
+          choice = scanner.nextInt();
+          scanner.nextLine(); // consume newline
+      } catch (InputMismatchException e) {
+          System.out.println("Invalid input. Please enter a number (1-5).");
+          scanner.nextLine(); // clear the invalid input
+          continue;
+      }
+
+      if (choice == 5) {
         Logger.logExit();
         System.out.println("Exiting program.");
         break;
       }
 
-      System.out.println("Enter username: ");
-      String username = scanner.nextLine().toLowerCase();
-
-      System.out.println("Enter password: ");
-      String password = scanner.nextLine();
-
-      User user = UserManager.authenticateUser(username, password);
-
-      if(user == null){
-        System.out.println("Invalide username or password. Try again.");
+      if (choice < 1 || choice > 5) {
+        System.out.println("Invalid option. Please enter a number between 1 and 5.");
         continue;
       }
 
-      boolean allowed = switch(choice){
-        case 1 -> user instanceof ScientistUser;
-        case 2 -> user instanceof SpaceAgencyUser;
-        case 3 -> user instanceof PolicymakerUser;
-        case 4 -> user instanceof AdminUser;
-        default -> false;
+      System.out.print("Enter username: ");
+      String username = scanner.nextLine().toLowerCase().trim();
+
+      System.out.print("Enter password: ");
+      String password = scanner.nextLine().trim();
+
+      User user = UserManager.authenticateUser(username, password);
+
+      if (user == null) {
+        System.out.println("Invalid username or password. Try again.");
+        Logger.log("Failed login attempt with username: " + username);
+        continue;
+      }
+
+      boolean allowed = switch (choice) {
+          case 1 -> user instanceof ScientistUser;
+          case 2 -> user instanceof SpaceAgencyUser;
+          case 3 -> user instanceof PolicymakerUser;
+          case 4 -> user instanceof AdminUser;
+          default -> false;
       };
 
-      if(!allowed) {
+      if (!allowed) {
         System.out.println("Access denied. You do not have permission for this role.");
-        Logger.log("Failed login: Role mismatch for user: " + username);
+        Logger.log("Failed role access attempt by user: " + username);
         continue;
       }
 
       Logger.log("User: " + username + " logged in as " + user.role);
       user.displayMenu(scanner);
     }
+
     scanner.close();
   }
 }
