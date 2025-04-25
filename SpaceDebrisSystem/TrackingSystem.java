@@ -88,7 +88,7 @@ public class TrackingSystem {
         List<SpaceObject> exitedDebris = new ArrayList<>();
 
                                     // Directory to write CSV and TXT output files
-        File outputDir = new File("enter a directory where you want these files saved");
+        File outputDir = new File("data/output");
         if (!outputDir.exists()) {
             outputDir.mkdirs(); // Create directory if it doesn't exist
         }
