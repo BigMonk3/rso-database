@@ -24,8 +24,8 @@ public class SpaceAgencyUser extends User {
             System.out.println("2. Generate Density Reports");
             System.out.println("3. Back");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume newline
+            // safe input with validation
+            int choice = InputHelper.getIntInput(scanner, "Enter an option (1-4): ", 1, 4);
 
             switch (choice) {
                 case 1 -> {
