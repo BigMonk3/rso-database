@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
 /**
- * Controls main operations of the system
- * such as user type selection and login.
+ * main operations of the system
+ * such as user type selection and login
  */
 public class MissionControl {
 
     /**
-     * Starts simulation and handles main user interaction.
+     * starts simulation and handles user interaction
      */
     public void startSimulation() {
         Scanner scanner = new Scanner(System.in);
