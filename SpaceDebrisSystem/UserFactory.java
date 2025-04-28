@@ -1,5 +1,5 @@
 /**
- * Factory class to create User instances based on UserRole.
+ * factory class to create User instances based on UserRole.
  */
 public class UserFactory {
 

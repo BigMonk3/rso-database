@@ -150,7 +150,7 @@ public class TrackingSystem {
     }
 
     /**
-     * helper method to print a formatted list of space objects
+     * method to print a formatted list of space objects
      * @param list List of space objects
      */
     private static void printObjectList(List<SpaceObject> list) {

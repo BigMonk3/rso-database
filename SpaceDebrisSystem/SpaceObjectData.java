@@ -4,17 +4,17 @@ import java.io.IOException;
 import java.util.HashMap;
 
 /**
- * Handles loading of space object data from a CSV file into a HashMap
- * Reads fields from a structured CSV file and maps each object type
+ * handles loading of space object data from CSV file into a HashMap
+ * reads from a CSV file and maps each object type
  * to its appropriate subclass Debris, Payload, RocketBody, Unknown
  */
 public class SpaceObjectData {
 
-    // Default path to the CSV file                 enter file path here 
+    // Default path to the CSV file                 
     private static final String DEFAULT_CSV_PATH = "data/rso_metrics.csv";
 
     /**
-     * Loads objects using the default path
+     * loads objects using the default path of CSV file
      * @return HashMap mapping record IDs to SpaceObject instances
      */
     public static HashMap<String, SpaceObject> loadObjects() {
@@ -22,9 +22,9 @@ public class SpaceObjectData {
     }
 
     /**
-     * Reads a CSV file and parses it into a HashMap of SpaceObject
-     * identifying object type and selecting appropriate subclass
-     * @param csvFilePath full file path to the space object CSV file
+     * reads CSV file and parses it into a HashMap of SpaceObject
+     * identifying object type selecting appropriate subclass
+     * @param csvFilePath file path to the space object CSV file
      * @return HashMap<String, SpaceObject> of parsed data
      */
     public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
@@ -38,12 +38,14 @@ public class SpaceObjectData {
             while (line != null) {
                 if (isFirstLine) {
                     line = br.readLine();
-                    isFirstLine = false; // skip header row
+                    // skip header row
+                    isFirstLine = false; 
                     continue;
                 }
 
                 String[] values = line.split(",");
-                if (values.length < 20) continue; // check for valid line
+                // skip header row
+                if (values.length < 20) continue; 
 
                 // extract fields in expected CSV order based on project prompt
                 String recordId = values[0].trim();

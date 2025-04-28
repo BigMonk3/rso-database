@@ -10,7 +10,7 @@ public class MissionControl {
      * starts simulation and handles user interaction
      */
     public void startSimulation() {
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in); 
         boolean running = true;
 
         while (running) {

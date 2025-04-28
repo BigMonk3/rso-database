@@ -36,6 +36,12 @@ public class UserManager {
         }
     }
 
+    /**
+     * creates a new user ask for input and writes the new user to map and CSV file
+     * validates the username, password, role before creating the user
+     * @param scanner for user input
+     */
+
     public static void createUser(Scanner scanner){
         System.out.println("Enter first Name: ");
         String firstName = scanner.nextLine();
@@ -80,10 +86,11 @@ public class UserManager {
             }
         }
         
-
+        //creats new user 
         User newUser = UserFactory.createUser(username, password, firstName, lastName, dateOfBirth, role);
         userMap.put(username, newUser);
 
+        //writes user to to CSV file
         try (FileWriter fw = new FileWriter(USER_FILE, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
@@ -99,14 +106,15 @@ public class UserManager {
     }
 
 /**
- * Allows administrator to update a user's username and/or password.
- * Prompts the admin and updates the userMap and CSV file accordingly.
+ * admin update a user username and/or password
+ * updates the userMap and CSV file accordingly
  *
  * @param scanner Scanner for input
  */
 public static void manageUser(Scanner scanner) {
     System.out.print("Enter username to manage: ");
-    String username = scanner.nextLine().toLowerCase(); // Normalize for case-insensitivity
+    //for case insensitivity
+    String username = scanner.nextLine().toLowerCase(); 
 
     if (!userMap.containsKey(username)) {
         System.out.println("User not found.");
@@ -123,14 +131,14 @@ public static void manageUser(Scanner scanner) {
 
     boolean updated = false;
 
-    // Update password
+    // update password
     if (!newPassword.isEmpty()) {
         user.password = newPassword;
         Logger.log("Administrator updated password for user: " + username);
         updated = true;
     }
 
-    // Update username
+    // update username
     if (!newUsername.isEmpty() && !newUsername.equals(username)) {
         user.username = newUsername;
         userMap.remove(username);
@@ -139,6 +147,7 @@ public static void manageUser(Scanner scanner) {
         updated = true;
     }
 
+    //saves changes to file if any made
     if (updated) {
         saveUsersToFile();
         System.out.println("User updated successfully.");
@@ -148,13 +157,13 @@ public static void manageUser(Scanner scanner) {
 }
 
 /**
- * Allows administrator to delete a user by username.
- *
- * @param scanner Scanner for input
+ * allows administrator to delete a user by username
+ * @param scanner for input
  */
 public static void deleteUser(Scanner scanner) {
     System.out.print("Enter username to delete: ");
-    String username = scanner.nextLine().toLowerCase(); // Normalize for case-insensitivity
+    //case insensitivity for username 
+    String username = scanner.nextLine().toLowerCase(); 
 
     if (userMap.remove(username) != null) {
         saveUsersToFile();
@@ -165,10 +174,14 @@ public static void deleteUser(Scanner scanner) {
     }
 }
 
-
+    /**
+     * saves users from the userMap to CSV file
+     * method overwrites existing file with the current user data
+     */
     private static void saveUsersToFile(){
         try(PrintWriter writer = new PrintWriter(new FileWriter(USER_FILE))){
             for(User user : userMap.values()){
+                //format to write user data to file
                 writer.printf("%s,%s,%s,%s,%s,%s\n",
                     user.username, user.password, user.firstName, user.lastName, user.dateOfBirth, user.role.name());
             }
@@ -176,7 +189,7 @@ public static void deleteUser(Scanner scanner) {
             System.err.println("Error saving users: " + e.getMessage());
         }
     }
-
+    
     public static User authenticateUser(String username, String password){
         User user = userMap.get(username);
         if(user != null && user.password.equals(password)){
