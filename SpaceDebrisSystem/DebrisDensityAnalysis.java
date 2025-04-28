@@ -8,9 +8,9 @@ import java.util.Scanner;
 public class DebrisDensityAnalysis {
 
     /**
-     * Prompts the user for a longitude range and generates a report
-     * of all objects whose longitudes fall within the specified range.
-     * The report includes the count of such objects and their key details.
+     * ask user for a longitude range and makes a report
+     * of all objects whose longitudes fall within the range
+     * report includes the count of objects and their details
      */
     public static void generateDensityReports() {
         Scanner scanner = new Scanner(System.in);
@@ -24,10 +24,15 @@ public class DebrisDensityAnalysis {
             int upperBound = scanner.nextInt();
             scanner.nextLine(); // consume newline
 
+            //formatting for header density report
             System.out.println("\n--- Debris Density Report ---");
+            //formatting for tabs and string printing
             System.out.printf("%-10s %-20s %-10s %-10s %-10s %-15s\n",
                     "Record ID", "Satellite Name", "Country", "Orbit", "Year", "Object Type");
 
+            //loads space objects and filters based on longitude range entered
+            
+            //fetches collection of objects and stream allows for mapping/filtering 
             long count = SpaceObjectData.loadObjects().values().stream()
                     .filter(o -> o.getLongitude() >= lowerBound && o.getLongitude() <= upperBound)
                     .peek(o -> System.out.printf("%-10s %-20s %-10s %-10s %-10d %-15s\n",
@@ -36,7 +41,8 @@ public class DebrisDensityAnalysis {
                     .count();
 
             System.out.println("\nTotal objects in range: " + count);
-
+        
+        //error handling for invalid inputs
         } catch (InputMismatchException e) {
             System.out.println("Invalid input! Please enter numeric values.");
             scanner.nextLine(); // clear bad input

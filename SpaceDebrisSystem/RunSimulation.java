@@ -5,7 +5,7 @@ public class RunSimulation{
     
     /** 
      * Main class to start simulation
-     * @author 
+     * @author Jesus Saenz Rocha, Patrick Pearson
      */
     public static void main(String[] args){
         MissionControl control = new MissionControl();
