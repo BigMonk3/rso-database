@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class SpaceObjectData {
 
-    // Default path to the CSV file                 
+    // default path to the CSV file                 
     private static final String DEFAULT_CSV_PATH = "data/rso_metrics.csv";
 
     /**

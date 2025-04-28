@@ -1,5 +1,5 @@
 /**
- * Represents a satellite or space object with a defined type like Payload or Rocket Body.
+ * represents a satellite or space object with a defined type like Payload or Rocket Body
  */
 public class Satellite extends SpaceObject {
     private int conjunctionCount;
@@ -14,7 +14,7 @@ public class Satellite extends SpaceObject {
 
     
     /** 
-     * @return String
+     * @return string
      */
     @Override
     public String getObjectType() {
