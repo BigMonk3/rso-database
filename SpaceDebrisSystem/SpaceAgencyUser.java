@@ -1,8 +1,8 @@
 import java.util.*;
 
 /**
- * Class that handles menu options for space agency representatives.
- * Offers impact analysis and debris density report generation.
+ * class handles menu options for space agency representatives
+ * choices for impact analysis and debris density report generation
  */
 public class SpaceAgencyUser extends User {
 
@@ -11,7 +11,7 @@ public class SpaceAgencyUser extends User {
     }
 
     /**
-     * Displays the menu for space agency representatives.
+     * displays menu for space agency representatives
      * @param scanner Scanner object for user input
      */
     @Override

@@ -2,8 +2,8 @@ import java.util.*;
 import java.util.Scanner;
 
 /**
- * Class responsible for analyzing and generating density reports
- * based on the longitudes of space objects.
+ * class responsible for analyzing and generating density report
+ * based on longitudes of space objects
  */
 public class DebrisDensityAnalysis {
 

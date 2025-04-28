@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 /**
- * Concrete implementation of a Scientist user.
- * Handles all menu interactions for Scientists.
+ * implementation of scientist user
+ * handles all menu interactions for scientists
  */
 public class ScientistUser extends User {
 

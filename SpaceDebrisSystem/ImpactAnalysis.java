@@ -2,8 +2,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Class responsible for performing impact-related analysis
- * on space objects such as long-term conjunction impact.
+ * class responsible for performing impact related analysis
+ * on space objects such as long term conjunction impact
  */
 
 public class ImpactAnalysis {
@@ -11,14 +11,14 @@ public class ImpactAnalysis {
     private static final String CSV_PATH = "data/rso_metrics.csv";
 
     /**
-     * Placeholder method for reviewing debris impact.
+     * placeholder method for reviewing debris impact
      */
     public static void reviewDebrisImpact() {
         // Future implementation
     }
 
     /**
-     * Placeholder method for assessing risk levels.
+     * placeholder method for assessing risk levels
      */
     public static void assessRiskLevels() {
         // Future implementation

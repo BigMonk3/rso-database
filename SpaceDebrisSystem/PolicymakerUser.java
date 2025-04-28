@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * Class that handles menu options for policymakers.
+ * class handles menu options for policymakers
  */
 class PolicymakerUser extends User {
 
@@ -10,7 +10,7 @@ class PolicymakerUser extends User {
     }
 
     /**
-     * Displays the menu for policymakers.
+     * displays the menu for policymakers
      * @param scanner Scanner object for user input
      */
     @Override

@@ -1,5 +1,5 @@
 /**
- * Represents a Rocket Body object in space.
+ * represents a Rocket Body object in space
  */
 public class RocketBody extends SpaceObject {
     private int conjunctionCount;
@@ -14,7 +14,7 @@ public class RocketBody extends SpaceObject {
 
     
     /** 
-     * @return String
+     * @return string
      */
     @Override
     public String getObjectType() {

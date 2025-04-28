@@ -7,6 +7,10 @@ import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * manages user related operations such as creating, updating, deleting, and authenticating users
+ * class interacts with the user CSV file to user data and maintains a map of users
+ */
 public class UserManager {
     private static final String  USER_FILE = "users.csv";
     private static final HashMap<String, User> userMap = new HashMap<>();
@@ -15,10 +19,15 @@ public class UserManager {
         loadUsers();
     }
 
+    /**
+     * loads users from CSV file stores them in userMap
+     * each user is created using the data in CSV file added to the userMap
+     */
     private static void loadUsers(){
         try(BufferedReader br = new BufferedReader(new FileReader(USER_FILE))){
             String line;
             while((line = br.readLine()) != null){
+                // split CSV line into parts
                 String[] parts = line.split(",");
                 if(parts.length == 6){
                     String username = parts[0];
@@ -176,7 +185,7 @@ public static void deleteUser(Scanner scanner) {
 
     /**
      * saves users from the userMap to CSV file
-     * method overwrites existing file with the current user data
+     * overwrites existing file with the current user data
      */
     private static void saveUsersToFile(){
         try(PrintWriter writer = new PrintWriter(new FileWriter(USER_FILE))){
@@ -189,7 +198,7 @@ public static void deleteUser(Scanner scanner) {
             System.err.println("Error saving users: " + e.getMessage());
         }
     }
-    
+
     public static User authenticateUser(String username, String password){
         User user = userMap.get(username);
         if(user != null && user.password.equals(password)){

@@ -1,5 +1,5 @@
 /**
- * Represents a Payload object in space.
+ * represents a Payload object in space
  */
 public class Payload extends SpaceObject {
     private int conjunctionCount;

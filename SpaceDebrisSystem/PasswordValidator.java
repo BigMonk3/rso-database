@@ -6,9 +6,9 @@ import java.util.regex.Pattern;
 public class PasswordValidator{
 
 /**
-* Validates password to ensure it contains at least one special character and one digit.
+* validates password to ensure it contains at least one special character and one digit
 * @param password the password string to check
-* @return true if valid, false otherwise
+* @return true if valid false otherwise
 */
     public static boolean isValid(String password){
         Pattern specialCharPattern = Pattern.compile("[!@#$%^&*()_+=|<>?{}\\[\\]~-]");
