@@ -2,12 +2,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * class for handling user input safely and cleanly
+ * class for handling user input
  */
 public class InputHelper {
 
     /**
-     * prompts the user for an integer input within a specified range
+     * prompts the user for an integer input within a range
      * loops until a valid integer is entered
      *
      * @param scanner scanner for user input
