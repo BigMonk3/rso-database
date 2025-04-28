@@ -2,13 +2,22 @@ import java.util.Scanner;
 
 public class AdminUser extends User {
     
+    /**
+     * constructor creating an AdminUser object
+     * and assigns the role of ADMINISTRATOR to this user object
+     * @param username username for administrator
+     * @param password password foradministrator
+     * @param firstName first name for administrator
+     * @param lastName last name for administrator
+     * @param dateOfBirth birth date for administrator
+     */
     public AdminUser(String username, String password, String firstName, String lastName, String dateOfBirth) {
         super(username, password, firstName, lastName, dateOfBirth, UserRole.ADMINISTRATOR);
     }
 
     /**
-     * displays Administrator specific menu with options to create, manage, or delete users
-     * @param scanner scanner to read user input
+     * displays administrator menu with choices to create, manage, or delete users
+     * @param scanner scanner for user input
      */
     @Override
     public void displayMenu(Scanner scanner) {
@@ -21,7 +30,7 @@ public class AdminUser extends User {
             System.out.println("3. Delete User");
             System.out.println("4. Back");
 
-            // safe input with validation
+            //safe input with validation
             int choice = InputHelper.getIntInput(scanner, "Enter an option (1-4): ", 1, 4);
 
             switch (choice) {
