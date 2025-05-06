@@ -1,6 +1,6 @@
 import java.util.regex.Pattern;
 
-/*
+/**
  * Class for password validation
  */
 public class PasswordValidator{

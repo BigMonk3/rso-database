@@ -2,6 +2,9 @@ import java.util.*;
 import java.io.*;
 import java.util.stream.Collectors;
 
+/**
+ * displays a menu to allow the Scientist to view specific types of space objects
+ */
 public class TrackingSystem {
     // full path to the CSV file should match file path with SpaceObjectData.java class
     private static final String CSV_PATH = "data/rso_metrics.csv";

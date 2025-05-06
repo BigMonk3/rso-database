@@ -1,3 +1,6 @@
+/**
+ * represents a debris object
+ */
 public class Debris extends SpaceObject {
     private int conjunctionCount;
 

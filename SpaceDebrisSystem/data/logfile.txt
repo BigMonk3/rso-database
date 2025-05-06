@@ -13,3 +13,11 @@
 [2025-05-05 22:47:51] Output written to assessed_debris.csv and exited_debris_report.txt.
 [2025-05-05 22:47:52] Scientist returned to main menu.
 [2025-05-05 22:47:54] Program exited by user. Final debris report and logs have been saved.
+[2025-05-05 23:35:55] Program exited by user. Final debris report and logs have been saved.
+[2025-05-06 13:35:16] User: scientistuserdemo logged in as SCIENTIST
+[2025-05-06 13:35:17] Scientist selected 'Track Object in Space'.
+[2025-05-06 13:35:17] Loaded 49 space objects from file: data/rso_metrics_columns_jumbled.csv
+[2025-05-06 13:35:21] Scientist accessed Track Objects menu.
+[2025-05-06 13:35:21] Scientist requested to view objects of type: rocket body
+[2025-05-06 13:37:03] Scientist returned to main menu.
+[2025-05-06 13:37:03] Program exited by user. Final debris report and logs have been saved.
