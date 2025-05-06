@@ -11,14 +11,14 @@ import java.util.HashMap;
 public class SpaceObjectData {
 
     // default path to the CSV file                 
-    private static final String DEFAULT_CSV_PATH = "data/rso_metrics.csv";
+    // private static final String DEFAULT_CSV_PATH = "data/rso_metrics.csv";
 
     /**
      * loads objects using the default path of CSV file
      * @return HashMap mapping record IDs to SpaceObject instances
      */
     public static HashMap<String, SpaceObject> loadObjects() {
-        return loadObjects(DEFAULT_CSV_PATH);
+        return loadObjects("data/rso_metrics_columns_jumbled.csv");
     }
 
     /**
@@ -30,36 +30,49 @@ public class SpaceObjectData {
     public static HashMap<String, SpaceObject> loadObjects(String csvFilePath) {
         
         HashMap<String, SpaceObject> objectMap = new HashMap<>();
-
+        
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
             String line = br.readLine();
+            String[] values = line.split(",");
+            HashMap<String, Integer> headers = new HashMap<>();
             boolean isFirstLine = true;
 
-            while (line != null) {
+            while (true) {
+
+                //map datatypes to indices in values list
                 if (isFirstLine) {
-                    line = br.readLine();
-                    // skip header row
+                    for(int i = 0 , j = 0; i < values.length; i++,j++) {
+                        headers.put(values[i].trim(), j);
+                        //fix because geohash data values have commas in them
+                        if (values[i].trim().equals("geohash")) {
+                            j++;
+                        }
+                    }
                     isFirstLine = false; 
+                    
                     continue;
                 }
 
-                String[] values = line.split(",");
-                // skip header row
-                if (values.length < 20) continue; 
+                line = br.readLine();
+                if (line == null) break;
 
-                // extract fields in expected CSV order based on project prompt
-                String recordId = values[0].trim();
-                String satelliteName = values[2].trim();
-                String country = values[3].trim();
-                String orbitType = values[4].trim();
-                String objectType = values[5].trim().toLowerCase();
-                int launchYear = Integer.parseInt(values[6].trim());
-                String launchSite = values[7].trim();
-                double longitude = parseDoubleSafe(values[8].trim());
-                double avgLongitude = parseDoubleSafe(values[9].trim());
-                String geohash = values[10].trim();
-                int daysOld = Integer.parseInt(values[19].trim());
-                int conjunctionCount = Integer.parseInt(values[20].trim());
+                values = line.split(",");
+
+                if (values.length < 20) continue; //check valid line
+
+                // extract fields to variables using indices stored in hashmap
+                String recordId = values[headers.getOrDefault("record_id", 0)].trim();
+                String satelliteName = values[headers.getOrDefault("satellite_name", 0)].trim();
+                String country = values[headers.getOrDefault("country", 0)].trim();
+                String orbitType = values[headers.getOrDefault("approximate_orbit_type", 0)].trim();
+                String objectType = values[headers.getOrDefault("object_type", 0)].trim().toLowerCase();
+                int launchYear = Integer.parseInt(values[headers.getOrDefault("launch_year", 0)].trim());
+                String launchSite = values[headers.getOrDefault("launch_site", 0)].trim();
+                double longitude = parseDoubleSafe(values[headers.getOrDefault("longitude", 0)].trim());
+                double avgLongitude = parseDoubleSafe(values[headers.getOrDefault("avg_longitude", 0)].trim());
+                String geohash = values[headers.getOrDefault("geohash", 0)].trim() + ',' + values[headers.getOrDefault("geohash", 0)+1].trim();
+                int daysOld = Integer.parseInt(values[headers.getOrDefault("days_old", 0)].trim());
+                int conjunctionCount = Integer.parseInt(values[headers.getOrDefault("conjunction_count", 0)].trim());
 
                 SpaceObject obj;
 
@@ -71,7 +84,7 @@ public class SpaceObjectData {
                     case "payload" -> obj = new Payload(recordId, satelliteName, country, orbitType, launchYear,
                             launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
 
-                    case "rocket body", "rocketbody" -> obj = new RocketBody(recordId, satelliteName, country, orbitType, launchYear,
+                    case "rocket body", "rocketbody", "ROCKETBODY", "ROCKET BODY" -> obj = new RocketBody(recordId, satelliteName, country, orbitType, launchYear,
                             launchSite, longitude, avgLongitude, geohash, daysOld, conjunctionCount);
 
                     case "unknown", "" -> obj = new Unknown(recordId, satelliteName, country, orbitType, launchYear,
@@ -110,4 +123,3 @@ public class SpaceObjectData {
         }
     }
 }
-

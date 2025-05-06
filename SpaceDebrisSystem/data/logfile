@@ -1,0 +1,7 @@
+[2025-05-05 18:26:53] User: admin logged in as ADMINISTRATOR
+[2025-05-05 18:26:56] Administrator selected 'Create User'.
+[2025-05-05 18:27:54] User created: testuser as SCIENTIST
+[2025-05-05 18:28:07] Administrator selected 'Delete User'.
+[2025-05-05 18:28:10] Administrator deleted user: testuser
+[2025-05-05 18:28:15] Administrator returned to main menu.
+[2025-05-05 18:28:16] Program exited by user. Final debris report and logs have been saved.

@@ -6,30 +6,32 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
- * manages user related operations such as creating, updating, deleting, and authenticating users
- * class interacts with the user CSV file to user data and maintains a map of users
+ * Manages user-related operations such as creating, updating, deleting, and authenticating users.
+ * This class interacts with the user CSV file to store user data and maintains a map of users.
  */
 public class UserManager {
-    private static final String  USER_FILE = "users.csv";
+    private static final String USER_FILE = "users.csv";
     private static final HashMap<String, User> userMap = new HashMap<>();
 
-    static{
+    static {
         loadUsers();
     }
 
     /**
-     * loads users from CSV file stores them in userMap
-     * each user is created using the data in CSV file added to the userMap
+     * Loads users from a CSV file and stores them in the userMap.
+     * Each user is created using the data from the CSV file and added to the userMap.
      */
-    private static void loadUsers(){
-        try(BufferedReader br = new BufferedReader(new FileReader(USER_FILE))){
+    private static void loadUsers() {
+        try (BufferedReader br = new BufferedReader(new FileReader(USER_FILE))) {
             String line;
-            while((line = br.readLine()) != null){
-                // split CSV line into parts
+            while ((line = br.readLine()) != null) {
+                // Split CSV line into parts
                 String[] parts = line.split(",");
-                if(parts.length == 6){
+                if (parts.length == 6) {
                     String username = parts[0];
                     String password = parts[1];
                     String firstName = parts[2];
@@ -40,40 +42,50 @@ public class UserManager {
                     userMap.put(username, user);
                 }
             }
-        } catch(IOException e){
-            System.err.println("Warning: Could NOT load exisiting users.");
+        } catch (IOException e) {
+            System.err.println("Warning: Could NOT load existing users.");
         }
     }
 
     /**
-     * creates a new user ask for input and writes the new user to map and CSV file
-     * validates the username, password, role before creating the user
+     * Creates a new user, asks for input, and writes the new user to the map and CSV file.
+     * Validates the username, password, role, and date of birth before creating the user.
+     * 
      * @param scanner for user input
      */
-
-    public static void createUser(Scanner scanner){
+    public static void createUser(Scanner scanner) {
         System.out.println("Enter first Name: ");
         String firstName = scanner.nextLine();
 
         System.out.println("Enter last name: ");
         String lastName = scanner.nextLine();
 
-        System.out.println("Enter date of birth (YYYY-MM-DD): ");
-        String dateOfBirth = scanner.nextLine();
+        String dateOfBirth;
+        while (true) {
+            System.out.println("Enter date of birth (YYYY-MM-DD): ");
+            dateOfBirth = scanner.nextLine();
+
+            // Validate date format
+            if (isValidDate(dateOfBirth)) {
+                break;
+            } else {
+                System.out.println("Invalid date format. Please enter the date in the format YYYY-MM-DD.");
+            }
+        }
 
         System.out.println("Enter username: ");
         String username = scanner.nextLine().toLowerCase();
 
-        if(userMap.containsKey(username)){
-            System.out.println("Username already exist.");
+        if (userMap.containsKey(username)) {
+            System.out.println("Username already exists.");
             return;
         }
 
         String password;
-        while(true){
+        while (true) {
             System.out.println("Enter password (must include at least one number and one special character): ");
             password = scanner.nextLine();
-            if(PasswordValidator.isValid(password)) break;
+            if (PasswordValidator.isValid(password)) break;
             System.out.println("Invalid password, try again.");
         }
 
@@ -94,12 +106,12 @@ public class UserManager {
                 return;
             }
         }
-        
-        //creats new user 
+
+        // Creates new user
         User newUser = UserFactory.createUser(username, password, firstName, lastName, dateOfBirth, role);
         userMap.put(username, newUser);
 
-        //writes user to to CSV file
+        // Writes user to the CSV file
         try (FileWriter fw = new FileWriter(USER_FILE, true);
              BufferedWriter bw = new BufferedWriter(fw);
              PrintWriter out = new PrintWriter(bw)) {
@@ -114,94 +126,114 @@ public class UserManager {
         }
     }
 
-/**
- * admin update a user username and/or password
- * updates the userMap and CSV file accordingly
- *
- * @param scanner Scanner for input
- */
-public static void manageUser(Scanner scanner) {
-    System.out.print("Enter username to manage: ");
-    //for case insensitivity
-    String username = scanner.nextLine().toLowerCase(); 
-
-    if (!userMap.containsKey(username)) {
-        System.out.println("User not found.");
-        return;
+    /**
+     * Validates the format of the date of birth.
+     * The expected format is YYYY-MM-DD.
+     * 
+     * @param date the date string to validate
+     * @return true if the date is in the correct format, false otherwise
+     */
+    private static boolean isValidDate(String date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(false); // Disable lenient parsing to ensure exact format
+        try {
+            sdf.parse(date); // Try to parse the date
+            return true;
+        } catch (ParseException e) {
+            return false; // Return false if the date is invalid
+        }
     }
-
-    User user = userMap.get(username);
-
-    System.out.print("Enter new username (or press Enter to keep current): ");
-    String newUsername = scanner.nextLine().trim().toLowerCase();
-
-    System.out.print("Enter new password (or press Enter to keep current): ");
-    String newPassword = scanner.nextLine();
-
-    boolean updated = false;
-
-    // update password
-    if (!newPassword.isEmpty()) {
-        user.password = newPassword;
-        Logger.log("Administrator updated password for user: " + username);
-        updated = true;
-    }
-
-    // update username
-    if (!newUsername.isEmpty() && !newUsername.equals(username)) {
-        user.username = newUsername;
-        userMap.remove(username);
-        userMap.put(newUsername, user);
-        Logger.log("Administrator changed username from '" + username + "' to '" + newUsername + "'");
-        updated = true;
-    }
-
-    //saves changes to file if any made
-    if (updated) {
-        saveUsersToFile();
-        System.out.println("User updated successfully.");
-    } else {
-        System.out.println("No changes were made.");
-    }
-}
-
-/**
- * allows administrator to delete a user by username
- * @param scanner for input
- */
-public static void deleteUser(Scanner scanner) {
-    System.out.print("Enter username to delete: ");
-    //case insensitivity for username 
-    String username = scanner.nextLine().toLowerCase(); 
-
-    if (userMap.remove(username) != null) {
-        saveUsersToFile();
-        Logger.log("Administrator deleted user: " + username);
-        System.out.println("User deleted successfully.");
-    } else {
-        System.out.println("User not found.");
-    }
-}
 
     /**
-     * saves users from the userMap to CSV file
-     * overwrites existing file with the current user data
+     * Admin updates a user's username and/or password.
+     * Updates the userMap and the CSV file accordingly.
+     * 
+     * @param scanner Scanner for input
      */
-    private static void saveUsersToFile(){
-        try(PrintWriter writer = new PrintWriter(new FileWriter(USER_FILE))){
-            for(User user : userMap.values()){
-                //format to write user data to file
+    public static void manageUser(Scanner scanner) {
+        System.out.print("Enter username to manage: ");
+        String username = scanner.nextLine().toLowerCase();
+
+        if (!userMap.containsKey(username)) {
+            System.out.println("User not found.");
+            return;
+        }
+
+        User user = userMap.get(username);
+
+        System.out.print("Enter new username (or press Enter to keep current): ");
+        String newUsername = scanner.nextLine().trim().toLowerCase();
+
+        System.out.print("Enter new password (or press Enter to keep current): ");
+        String newPassword = scanner.nextLine();
+
+        boolean updated = false;
+
+        if (!newPassword.isEmpty()) {
+            user.password = newPassword;
+            Logger.log("Administrator updated password for user: " + username);
+            updated = true;
+        }
+
+        if (!newUsername.isEmpty() && !newUsername.equals(username)) {
+            user.username = newUsername;
+            userMap.remove(username);
+            userMap.put(newUsername, user);
+            Logger.log("Administrator changed username from '" + username + "' to '" + newUsername + "'");
+            updated = true;
+        }
+
+        if (updated) {
+            saveUsersToFile();
+            System.out.println("User updated successfully.");
+        } else {
+            System.out.println("No changes were made.");
+        }
+    }
+
+    /**
+     * Allows the administrator to delete a user by username.
+     * 
+     * @param scanner Scanner for input
+     */
+    public static void deleteUser(Scanner scanner) {
+        System.out.print("Enter username to delete: ");
+        String username = scanner.nextLine().toLowerCase();
+
+        if (userMap.remove(username) != null) {
+            saveUsersToFile();
+            Logger.log("Administrator deleted user: " + username);
+            System.out.println("User deleted successfully.");
+        } else {
+            System.out.println("User not found.");
+        }
+    }
+
+    /**
+     * Saves users from the userMap to the CSV file.
+     * This method overwrites the existing file with the current user data.
+     */
+    private static void saveUsersToFile() {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(USER_FILE))) {
+            for (User user : userMap.values()) {
                 writer.printf("%s,%s,%s,%s,%s,%s\n",
                     user.username, user.password, user.firstName, user.lastName, user.dateOfBirth, user.role.name());
             }
-        }catch (IOException e){
+        } catch (IOException e) {
             System.err.println("Error saving users: " + e.getMessage());
         }
     }
 
-    public static User authenticateUser(String username, String password){
+    /**
+     * Authenticates a user by checking the username and password.
+     * 
+     * @param username the username of the user to authenticate
+     * @param password the password of the user to authenticate
+     * @return the authenticated User if credentials are correct, otherwise null
+     */
+    public static User authenticateUser(String username, String password) {
         User user = userMap.get(username);
-        if(user != null && user.password.equals(password)){
+        if (user != null && user.password.equals(password)) {
             return user;
         }
         return null;
