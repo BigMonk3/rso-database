@@ -1,8 +1,8 @@
 import java.util.Scanner;
 
 /**
- * Abstract base class representing a generic user.
- * Enforces the displayMenu method to allow role-specific functionality.
+ * abstract base class representing a generic user
+ * enforces the displayMenu method to allow role-specific functionality
  */
 public abstract class User {
     protected String username;
@@ -25,6 +25,6 @@ public abstract class User {
         return role;
     }
 
-    // Enforced for each subclass to implement its own menu
+    // enforced for each subclass to implement its own menu
     public abstract void displayMenu(Scanner scanner);
 }
