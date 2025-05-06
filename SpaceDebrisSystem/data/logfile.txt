@@ -1,0 +1,15 @@
+[2025-05-05 22:47:44] User: scientistuserdemo logged in as SCIENTIST
+[2025-05-05 22:47:45] Scientist selected 'Track Object in Space'.
+[2025-05-05 22:47:45] Loaded 49 space objects from file: data/rso_metrics_columns_jumbled.csv
+[2025-05-05 22:47:46] Scientist accessed Track Objects menu.
+[2025-05-05 22:47:46] Scientist requested to view objects of type: debris
+[2025-05-05 22:47:49] Scientist selected 'Assess Orbit Status'.
+[2025-05-05 22:47:49] Loaded 49 space objects from file: data/rso_metrics.csv
+[2025-05-05 22:47:50] Scientist selected 'Track Objects in LEO'.
+[2025-05-05 22:47:50] Scientist selected 'Assess Orbit Status'.
+[2025-05-05 22:47:50] Loaded 49 space objects from file: data/rso_metrics.csv
+[2025-05-05 22:47:51] Scientist selected 'Assess Debris Orbit Status'.
+[2025-05-05 22:47:51] Debris orbit status assessed: 0 in orbit, 26 exited.
+[2025-05-05 22:47:51] Output written to assessed_debris.csv and exited_debris_report.txt.
+[2025-05-05 22:47:52] Scientist returned to main menu.
+[2025-05-05 22:47:54] Program exited by user. Final debris report and logs have been saved.
