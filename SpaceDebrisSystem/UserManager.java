@@ -10,8 +10,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 /**
- * Manages user-related operations such as creating, updating, deleting, and authenticating users.
- * This class interacts with the user CSV file to store user data and maintains a map of users.
+ * manages user operations such as creating, updating, deleting, and authenticating users
+ * interacts with user CSV file to store user data and maintains map of users
  */
 public class UserManager {
     private static final String USER_FILE = "users.csv";
@@ -22,14 +22,14 @@ public class UserManager {
     }
 
     /**
-     * Loads users from a CSV file and stores them in the userMap.
-     * Each user is created using the data from the CSV file and added to the userMap.
+     * loads users from CSV file, stores them in the userMap
+     * each user is created using data from the CSV file and added to the userMap
      */
     private static void loadUsers() {
         try (BufferedReader br = new BufferedReader(new FileReader(USER_FILE))) {
             String line;
             while ((line = br.readLine()) != null) {
-                // Split CSV line into parts
+                // split CSV line into parts
                 String[] parts = line.split(",");
                 if (parts.length == 6) {
                     String username = parts[0];
@@ -48,8 +48,8 @@ public class UserManager {
     }
 
     /**
-     * Creates a new user, asks for input, and writes the new user to the map and CSV file.
-     * Validates the username, password, role, and date of birth before creating the user.
+     * creates a new user, asks for input, and writes the new user to the map and CSV file
+     * validates username, password, role, and date of birth before creating the user
      * 
      * @param scanner for user input
      */
@@ -65,7 +65,7 @@ public class UserManager {
             System.out.println("Enter date of birth (YYYY-MM-DD): ");
             dateOfBirth = scanner.nextLine();
 
-            // Validate date format
+            // validate date format
             if (isValidDate(dateOfBirth)) {
                 break;
             } else {
@@ -127,26 +127,26 @@ public class UserManager {
     }
 
     /**
-     * Validates the format of the date of birth.
-     * The expected format is YYYY-MM-DD.
+     * validates the format of the date of birth
+     * format is YYYY-MM-DD
      * 
      * @param date the date string to validate
      * @return true if the date is in the correct format, false otherwise
      */
     private static boolean isValidDate(String date) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setLenient(false); // Disable lenient parsing to ensure exact format
+        sdf.setLenient(false); // disable lenient parsing to ensure exact format
         try {
-            sdf.parse(date); // Try to parse the date
+            sdf.parse(date); // try to parse the date
             return true;
         } catch (ParseException e) {
-            return false; // Return false if the date is invalid
+            return false; // return false if the date is invalid
         }
     }
 
     /**
-     * Admin updates a user's username and/or password.
-     * Updates the userMap and the CSV file accordingly.
+     * admin updates a user's username and/or password
+     * updates userMap and the CSV file
      * 
      * @param scanner Scanner for input
      */
@@ -192,7 +192,7 @@ public class UserManager {
     }
 
     /**
-     * Allows the administrator to delete a user by username.
+     * allows administrator to delete a user
      * 
      * @param scanner Scanner for input
      */
@@ -210,8 +210,8 @@ public class UserManager {
     }
 
     /**
-     * Saves users from the userMap to the CSV file.
-     * This method overwrites the existing file with the current user data.
+     * saves users from userMap to the CSV file
+     * method overwrites the existing file with current user data
      */
     private static void saveUsersToFile() {
         try (PrintWriter writer = new PrintWriter(new FileWriter(USER_FILE))) {
@@ -225,11 +225,11 @@ public class UserManager {
     }
 
     /**
-     * Authenticates a user by checking the username and password.
+     * authenticates user by checking the username and password
      * 
      * @param username the username of the user to authenticate
      * @param password the password of the user to authenticate
-     * @return the authenticated User if credentials are correct, otherwise null
+     * @return the authenticated User if credentials are correct otherwise null
      */
     public static User authenticateUser(String username, String password) {
         User user = userMap.get(username);
