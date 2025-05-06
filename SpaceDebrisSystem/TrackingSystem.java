@@ -46,7 +46,7 @@ public class TrackingSystem {
     }
 
     /**
-     * Presents the orbit assessment menu to the user
+     * presents the orbit assessment menu to the user
      * 1 view all objects in LEO, 2 assess if debris is still in orbit
      * @param scanner scanner to read user input
      */
