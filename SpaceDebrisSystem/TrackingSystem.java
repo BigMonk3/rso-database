@@ -14,7 +14,6 @@ public class TrackingSystem {
      * @param scanner Used to capture user input
      */
     public static void trackObjects(Scanner scanner) {
-        System.out.println("******CALLING loadObjects()******");
         HashMap<String, SpaceObject> objects = SpaceObjectData.loadObjects();
 
         System.out.println("\n== Track Objects ==");
@@ -28,7 +27,7 @@ public class TrackingSystem {
         scanner.nextLine(); // consume newline after numeric input
 
         String filterType = switch (choice) {
-            case 1 -> "rocket body";
+            case 1 -> "rocketbody";
             case 2 -> "debris";
             case 3 -> "payload";
             case 4 -> "unknown";

@@ -1,3 +1,9 @@
 #!/bin/bash
 
 rm *.class
+
+rm .DS_Store
+rm /data/.DS_Store
+rm /data/output/.DS_Store
+rm ../.DS_Store
+rm ../guidelines/.DS_Store
